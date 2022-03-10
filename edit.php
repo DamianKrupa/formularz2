@@ -13,15 +13,13 @@
     
     } else {
         $id = $_GET['id'];
-        //$result = $crud->getAttendeesDetails($id);
         $attendee =$crud->getAttendeesDetails($id);
-
 
 ?>
     
     <h1 class='text-center'>Edit Record</h1>
     <form method="post" action="editpost.php">
-        <input type="hidden" name="id" value="<?php echo $attendee['attendance_id'] ?>" />
+        <input type="hidden" name="id" value="<?php echo $attendee['id'] ?>" />
         <div class="mb-3">
             <label for="firstname" class="form-label">Firstname</label>
             <input type="text" class="form-control" value="<?php echo $attendee['firstname'] ?>" id="firstname" name="firstname">
@@ -29,6 +27,10 @@
         <div class="mb-3">
             <label for="lastname" class="form-label">Last name</label>
             <input type="text" class="form-control" value="<?php echo $attendee['lastname'] ?>" id="lastname" name="lastname">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input required type="password" class="form-control" id="password" name="password">
         </div>
         <div class="mb-3">
             <label for="dob" class="form-label">Date of birth</label>

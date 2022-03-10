@@ -23,17 +23,16 @@
             <input required type="text" class="form-control" id="lastname" name="lastname">
         </div>
         <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input required type="password" class="form-control" id="password" name="password">
+        </div>
+        <div class="mb-3">
             <label for="dob" class="form-label">Date of birth</label>
             <input required type="text" class="form-control" id="dob" name="dob">
         </div>
         <div class="mb-3">
             <label for="speciality" class="form-label">Area of Expertise</label>
             <select class="form-select" id="speciality" name="speciality">
-                <!-- <option selected>Nie wybrano</option>
-                <option value="1">Database Admin</option>
-                <option value="2">Software Developer</option>
-                <option value="3">Web Administrator</option>
-                <option value="4">Network Engineer</option> -->
                <?php while($r = $results->fetch(PDO::FETCH_ASSOC)) { ?>
                     <option value="<?php echo $r['speciality_id']; ?>"> <?php echo $r['name'];  ?> </option>
                 <?php } ?>

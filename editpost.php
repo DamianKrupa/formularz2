@@ -11,8 +11,9 @@ if(isset($_POST['submit'])){
     $email = $_POST['email'];
     $phone = $_POST['phone'];
     $speciality = $_POST['speciality'];
+    $pass = $_POST['password'];
 
-    $result = $crud->edditAttendees($id, $fname, $lname, $dob, $email, $phone, $speciality);
+    $result = $crud->edditAttendees($id, $fname, $lname, $dob, $email, $phone, $speciality, $pass);
     if($result){
         header("Location: viewrecords.php");
         include "includes/successmessage.php";

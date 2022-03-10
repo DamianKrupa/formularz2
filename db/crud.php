@@ -8,12 +8,10 @@
             $this->db = $conn;
         }
         //publiczna funkcja, która wstawia rekordy do bazy
-        public function insertAttendees($fname, $lname, $dob, $email, $phone, $speciality){
+        public function insertAttendees($fname, $lname, $dob, $email, $phone, $speciality, $pass){
             try {
-                //$sql = "INSERT INTO attende VALUES (firstname,lastname,dob,email,phone,speciality_id) 
-                                    //(:fname,:lname,:dob,:email,:phone,:speciality)";
-                    $sql = "INSERT INTO `attende`(`firstname`, `lastname`, `dob`, `email`, `phone`, `speciality_id`) 
-                                    VALUES (:fname,:lname,:dob,:email,:phone,:speciality)";
+                    $sql = "INSERT INTO `attende`(`firstname`, `lastname`, `dob`, `email`, `phone`, `speciality_id`, `password`) 
+                                    VALUES (:fname,:lname,:dob,:email,:phone,:speciality,:pass)";
 
                 $stmt = $this->db->prepare($sql);
                 $stmt->bindparam(':fname',$fname);
@@ -22,6 +20,7 @@
                 $stmt->bindparam(':email',$email);
                 $stmt->bindparam(':phone',$phone);
                 $stmt->bindparam(':speciality',$speciality);
+                $stmt->bindparam(':pass',$pass);
                 //execute statmant
                 $stmt->execute();
                 return true;
@@ -33,7 +32,12 @@
             }
         }
 
-        public function edditAttendees($id, $fname, $lname, $dob, $email, $phone, $speciality){
+
+
+
+
+
+        public function edditAttendees($id, $fname, $lname, $dob, $email, $phone, $speciality, $pass){
             try{
                 $sql = "UPDATE `attende` SET 
                 `firstname`=:fname,
@@ -41,9 +45,9 @@
                 `dob`=:dob,
                 `email`=:email,
                 `phone`=:phone,
-                `speciality_id`=:speciality 
-            WHERE `attendance_id`=:id";
-
+                `speciality_id`=:speciality,
+                `password`=:pass
+            WHERE `id`=:id";
                 $stmt = $this->db->prepare($sql);
                 $stmt->bindparam(':id',$id);
                 $stmt->bindparam(':fname',$fname);
@@ -52,6 +56,7 @@
                 $stmt->bindparam(':email',$email);
                 $stmt->bindparam(':phone',$phone);
                 $stmt->bindparam(':speciality',$speciality);
+                $stmt->bindparam(':pass',$pass);
                 //execute statmant
                 $stmt->execute();
                 return true;
@@ -63,14 +68,12 @@
         
         }
 
-
-
         public function getAttendees(){
             try{
                 $sql = "SELECT * FROM `attende` as a inner join `specialities` as s 
-                on a.speciality_id = s.speciality_id order by `attendance_id`";
-                $resutl = $this->db->query($sql);
-                return $resutl;
+                on a.speciality_id = s.speciality_id order by `id`";
+                $result = $this->db->query($sql);
+                return $result;
 
             }catch (PDOException $e) {
                 echo $e->getMessage();
@@ -82,7 +85,7 @@
         public function getAttendeesDetails($id){
         try{
             $sql = "SELECT * FROM `attende` as a inner join `specialities` as s 
-            on a.speciality_id = s.speciality_id where attendance_id = :id";
+            on a.speciality_id = s.speciality_id where `id` = :id";
             $stmt = $this->db->prepare($sql);
             $stmt->bindparam(':id', $id);
             $stmt->execute();
@@ -96,7 +99,7 @@
 
         public function deleteAttendees($id){
             try{
-                $sql = "DELETE FROM `attende` WHERE `attendance_id`=:id";
+                $sql = "DELETE FROM `attende` WHERE `id`=:id";
                 $stmt = $this->db->prepare($sql);
                 $stmt->bindparam(':id', $id);
                 $stmt->execute();
@@ -109,19 +112,16 @@
     
         }
             
-
-
         public function getSpecialities(){
             $sql = "SELECT * FROM `specialities`";
-            $resutl = $this->db->query($sql);
-            return $resutl;
+            $result = $this->db->query($sql);
+            return $result;
         }
-
 
 
     public function lastID(){
         try{
-          $sql = "SELECT max(`attendance_id`) as `attendance_id` FROM `attende`";
+          $sql = "SELECT max(`id`) as `id` FROM `attende`";
           $stmt = $this->db->prepare($sql);      
           $stmt->execute();
           $result = $stmt->fetch();
@@ -132,23 +132,6 @@
           return false;
       }
       }
-
-
- 
-
-    //   public function uploadFile($ftp_connection, $remote_server_dir){
-    //     ftp_pasv($ftp_connection, true);
-    //     for($i = 0; $i < count($_FILES['userfile']['name']); $i++) {
-    //         $filep=$_FILES['userfile']['tmp_name'][$i];
-    //         $name=$_FILES['userfile']['name'][$i]; 
-    //         $upload = ftp_put($ftp_connection, $remote_server_dir.'/'.$name, $filep, FTP_BINARY);
-    //         $num = $i+1;
-    //         echo $num.") $name <br>";
-    //     }
-    //     echo "<br> Uploaded successfull!";
-    //     echo "Szo to: ". count(array_filter($_FILES['file']['name']));
-    //     return $upload;
-    // }
 
     public function uploadFile($ftp_connection, $remote_server_dir, $file_name){
         ftp_pasv($ftp_connection, true);

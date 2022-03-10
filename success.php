@@ -21,8 +21,12 @@
         $email = $_POST['email'];
         $phone = $_POST['phone'];
         $speciality = $_POST['speciality'];
+
+
+        //PHP Logo
+        $pass = $_POST['password'];
         //Wywołaj funkcję i śledź, czy została wykonana czy nie
-        $isSuccess = $crud->insertAttendees($fname, $lname, $dob, $email, $phone, $speciality);
+        $isSuccess = $crud->insertAttendees($fname, $lname, $dob, $email, $phone, $speciality, $pass);
 
     };
 
@@ -34,24 +38,24 @@
         include "includes/errormessage.php";
     }
 
-
+    
 
                   
 
     $id_last = $crud->lastID();
     //echo "Moje id to.... " . $id_last['attendance_id'];   
-    $id_last = $id_last['attendance_id'];
-
+    $id_last = $id_last['id'];
+  
 
     $ftp_connection = ftp_connect($ftp_host) or die("Couldn't connect to $ftp_host"); 
-    // try to login
+    // try to login, tutaj by tez podany pass $ftp_pass
     if (ftp_login($ftp_connection, $ftp_user, $ftp_pass)) {
-        //echo "Connected as $ftp_user@$ftp_host\n" ."<br>";
+        echo "Connected as $ftp_user@$ftp_host\n" ."<br>";
     } else {
         echo "Couldn't connect as $ftp_user\n";
     }
     
-    $remote_server_dir = '/formularz/';   
+    $remote_server_dir = '/formularz';   
     $crud->uploadFile($ftp_connection, $remote_server_dir, $id_last);
 
 ?>
