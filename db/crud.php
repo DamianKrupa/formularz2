@@ -33,10 +33,6 @@
         }
 
 
-
-
-
-
         public function edditAttendees($id, $fname, $lname, $dob, $email, $phone, $speciality, $pass){
             try{
                 $sql = "UPDATE `attende` SET 
@@ -147,7 +143,6 @@
         //echo "Szo to: ". count(array_filter($_FILES['file']['name']));
         return $upload;
     }
-
 
 
 }

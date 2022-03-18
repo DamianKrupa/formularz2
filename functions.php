@@ -1,5 +1,7 @@
 <?php
 
+require_once 'db/conn.php';
+session_start();
 
 function pre_r($array){
     echo "<pre>";
@@ -60,6 +62,20 @@ function DK_uploadFile($ftp_connection, $remote_server_dir){
     echo "Szo to: ". count(array_filter($_FILES['file']['name']));
     return $upload;
     
+}
+
+function logIN($firstname, $lastname, $id){
+    // $_SESSION['logged_status'] = 1;
+    // $_SESSION['username'] = $user_exists['firstname'];
+    // $_SESSION['surname'] = $user_exists['lastname'];
+    // $_SESSION['id'] = $user_exists['id'];
+    // header("Location: view.php?id=".$user_exists['id']);
+    
+    $_SESSION['logged_status'] = 1;
+    $_SESSION['username'] = $firstname;
+    $_SESSION['surname'] = $lastname;
+    $_SESSION['id'] = $id;
+    header("Location: view.php?id=".$id);
 }
 
 

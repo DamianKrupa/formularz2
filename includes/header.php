@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -16,14 +17,31 @@
     <div class='container'>
     <nav class="navbar navbar-dark bg-primary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="index.php">IT Conferance</a>
+        <a class="navbar-brand" href=<?php echo "view.php?id=".$_SESSION['id']; ?>>
+          <?php 
+            if(isset($_SESSION['id'])){
+              echo $_SESSION['username'] . " " . $_SESSION['surname'] . " " . "(".$_SESSION['id'].")";
+            }else{
+             echo "Niezalogowany";
+              //echo '<img src="images/user.jpg" class="card-img-top" alt="...">';
+            }
+          ?>
+        </a>
+        
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-link active" aria-current="page" href="index.php"> <span class="sr-only">Home</span> </a>
+            <a class="nav-link active" aria-current="page" href=<?php echo "view.php?id=".$user_exists['id']; ?>> <span class="sr-only">Home</span> </a>
             <a class="nav-link" href="viewrecords.php">View Attendance</a>
+            <?php
+              if(isset($_SESSION['id'])){
+                echo '<a class="nav-link" style="color:red" href="wyloguj.php">Log out</a>';
+              }else{
+                echo '<a class="nav-link" style="color:red" href="indexLog.php">Log in</a>';
+              }
+            ?>
           </div>
         </div>
       </div>

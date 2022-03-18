@@ -15,7 +15,7 @@
     try {
         $pdo = new PDO($dsn, $user);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-       // echo "Hello Database";
+        //echo "Hello Database";
         //przechwytuje nasz error i zapisuje do zmiennej $e 
     } catch(PDOException $e) {
         //throw - zatrzymuje wykonywanie funkcji i wyświetla error za pomocą funkcji getMessage
@@ -28,6 +28,7 @@
     require_once 'user.php';
     $crud = new crud($pdo);
     $user = new user($pdo);
+ 
 
     $user->insertUser("admin","password");
 

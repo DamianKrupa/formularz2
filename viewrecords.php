@@ -1,7 +1,16 @@
 <?php 
+    session_start();
     $title = 'view_records';
     require_once 'includes/header.php'; 
     require_once 'db/conn.php';
+
+    if($_SESSION['logged_status'] != 1){
+        echo "Nie zalogowany";
+        include "includes/errormessage.php";
+        exit();
+    }else{
+        echo "Zalogowany";
+    }
 
     $results = $crud->getAttendees();
 ?>

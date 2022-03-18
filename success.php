@@ -6,12 +6,8 @@
 
     require_once 'config.php';
     require_once 'functions.php';
-    //Dzięki temu można uplodować dowolną ilość plików:
-    //require_once '.htaccess';
-
-
-
-
+    session_start();
+  
 
     //sprwdza, czy zmienna 'submit' istnieje na tej stroenie
     if(isset($_POST['submit'])){
@@ -39,13 +35,11 @@
     }
 
     
-
-                  
-
     $id_last = $crud->lastID();
-    //echo "Moje id to.... " . $id_last['attendance_id'];   
     $id_last = $id_last['id'];
-  
+    
+    //ustawiam sobie status nowego usera
+    
 
     $ftp_connection = ftp_connect($ftp_host) or die("Couldn't connect to $ftp_host"); 
     // try to login, tutaj by tez podany pass $ftp_pass
@@ -55,7 +49,7 @@
         echo "Couldn't connect as $ftp_user\n";
     }
     
-    $remote_server_dir = '/formularz';   
+    $remote_server_dir = 'formularz2/images';   
     $crud->uploadFile($ftp_connection, $remote_server_dir, $id_last);
 
 ?>
@@ -72,26 +66,10 @@
         </div>
     </div> 
 
-<br>
 <?php 
-    echo $_GET['firstname'];
-    echo $_GET['lasttname'];
-    echo $_GET['dob'];
-    echo $_GET['speciality'];
-    echo $_GET['email'];
-    echo $_GET['phone'];
-
-
-    echo "<br>  <br>";
-    header('location: viewrecords.php');
-                      
-
-?>
-
-<br>
-<br>
-<br>
-
-<?php 
+    $_SESSION['new_user'] = 1;
+    $_SESSION['id_new'] = $id_last;
+    echo $_SESSION['id_new'];
+    header("Location: zaloguj.php");
     require_once 'includes/footer.php'; 
 ?>
