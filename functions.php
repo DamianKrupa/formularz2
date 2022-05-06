@@ -65,12 +65,6 @@ function DK_uploadFile($ftp_connection, $remote_server_dir){
 }
 
 function logIN($firstname, $lastname, $id){
-    // $_SESSION['logged_status'] = 1;
-    // $_SESSION['username'] = $user_exists['firstname'];
-    // $_SESSION['surname'] = $user_exists['lastname'];
-    // $_SESSION['id'] = $user_exists['id'];
-    // header("Location: view.php?id=".$user_exists['id']);
-    
     $_SESSION['logged_status'] = 1;
     $_SESSION['username'] = $firstname;
     $_SESSION['surname'] = $lastname;

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.js"></script>
+
+    <!-- <link rel="stylesheet" type="text/css" href="css/datatables.min.css"> -->
+    <!-- <script src="js/jquery.min.js"></script> -->
+    <!-- <script type="text/javascript" src="css/datatables.min.css"></script> -->
+    <script>
+        $(document).ready(function(){
+            $('#specjalizacje_widok').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ajax": "getData.php",
+                rowCallback: function(row, data, index) {
+          if (data[2] == "Data Engineer") {
+             //$("td:eq(4)", row).addClass("error");
+            $(row).css('background-color','#79ff9c')
+          }
+        }
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+    <style>
+        .container{padding: 20px;}
+    </style>
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <table class="display" name="specjalizacje_widok" id="specjalizacje_widok" style="width: 100%" >
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>firstname</th>
+                    <th>name</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>id</th>
+                    <th>firstname</th>
+                    <th>name</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</body>
+</html>

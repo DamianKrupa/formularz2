@@ -1,0 +1,40 @@
+2022-05-05 15:42:08.241 +0200 [debug] ([34mlogger.js[0m) [31mStarting FDK in node v10.19.0 on linux[0m
+2022-05-05 15:42:08.901 +0200 [debug] ([34msequelize.js[0m) [31msetting up sqilite at "/opt/lampp/htdocs/formularz2/.fdk/store.sqlite"[0m
+2022-05-05 15:42:08.931 +0200 [error] Error: Please install sqlite3 package manually
+    at ConnectionManager._loadDialectModule (/usr/local/lib/node_modules/fdk/node_modules/sequelize/lib/dialects/abstract/connection-manager.js:55:15)
+    at new ConnectionManager (/usr/local/lib/node_modules/fdk/node_modules/sequelize/lib/dialects/sqlite/connection-manager.js:18:21)
+    at new SqliteDialect (/usr/local/lib/node_modules/fdk/node_modules/sequelize/lib/dialects/sqlite/index.js:13:30)
+    at new Sequelize (/usr/local/lib/node_modules/fdk/node_modules/sequelize/lib/sequelize.js:188:20)
+    at Object.<anonymous> (/usr/local/lib/node_modules/fdk/lib/instances/sequelize.js:26:18)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/lib/node_modules/fdk/lib/utils/data-util.js:11:19)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+undefined
+2022-05-05 15:43:01.557 +0200 [debug] ([34mlogger.js[0m) [31mStarting FDK in node v10.19.0 on linux[0m
+2022-05-05 15:43:01.879 +0200 [debug] ([34msequelize.js[0m) [31msetting up sqilite at "/opt/lampp/htdocs/formularz2/.fdk/store.sqlite"[0m
+2022-05-05 15:43:01.892 +0200 [error] Error: Please install sqlite3 package manually
+    at ConnectionManager._loadDialectModule (/usr/local/lib/node_modules/fdk/node_modules/sequelize/lib/dialects/abstract/connection-manager.js:55:15)
+    at new ConnectionManager (/usr/local/lib/node_modules/fdk/node_modules/sequelize/lib/dialects/sqlite/connection-manager.js:18:21)
+    at new SqliteDialect (/usr/local/lib/node_modules/fdk/node_modules/sequelize/lib/dialects/sqlite/index.js:13:30)
+    at new Sequelize (/usr/local/lib/node_modules/fdk/node_modules/sequelize/lib/sequelize.js:188:20)
+    at Object.<anonymous> (/usr/local/lib/node_modules/fdk/lib/instances/sequelize.js:26:18)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/lib/node_modules/fdk/lib/utils/data-util.js:11:19)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+undefined

@@ -14,6 +14,11 @@ if(isset($_POST['login_id'])){
   //Jesli tak, przechwyc je:
   $login_id = $_POST['login_id'];
   $password = $_POST['password'];
+  //Encje html. 
+  $login_id = htmlentities($login_id, ENT_QUOTES, "UTF-8");
+  $password = htmlentities($password, ENT_QUOTES, "UTF-8");
+
+
   $user_exists = $crud->getAttendeesDetails($login_id);
 }else{
   //Jesli nie, to musza pochodzic z formularza rejestracji. Przechwyc nowe id:

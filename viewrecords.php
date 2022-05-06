@@ -9,7 +9,7 @@
         include "includes/errormessage.php";
         exit();
     }else{
-        echo "Zalogowany";
+        //echo "Zalogowany";
     }
 
     $results = $crud->getAttendees();
