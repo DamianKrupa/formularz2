@@ -145,5 +145,25 @@
     }
 
 
+    public function insertJSON($name, $country, $contact){
+        try {
+                $sql = "INSERT INTO `insertedJSONdata` (`name`, `country`, `contact`)
+                                VALUES (:name,:country,:contact)";
+
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindparam(':name',$name);
+            $stmt->bindparam(':name',$country);
+            $stmt->bindparam(':contact',$contact);
+            //execute statmant
+            $stmt->execute();
+            return true;
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+
 }
 ?>

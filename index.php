@@ -122,7 +122,6 @@
     
 <?php 
 
-
     require_once 'includes/footer.php'; 
 ?>
 
@@ -134,4 +133,4 @@
         return new bootstrap.Popover(element);
         });
       });
-  </script>
+</script>
